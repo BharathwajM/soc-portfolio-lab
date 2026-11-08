@@ -4,7 +4,7 @@
 
 | Field | Value |
 |---|---|
-| Sentinel incidents | #5–#17 (13 incidents, 1 alert each; #17 was raised at ~23:52, after the data pull) |
+| Sentinel incidents | #5–#17 (13 incidents, 1 alert each; #17 was raised at ~23:52, after the data pull), plus #18 raised at 00:22:28 after the batch was closed (see timeline) |
 | Analytics rule | SOC Lab - Repeated Windows Sign-in Failures (`a82b3a31-dfe0-4a6c-a69b-cf2bb6b88af3`) |
 | Severity | Medium |
 | First incident (UTC) | 2026-11-07 17:52:11 |
@@ -42,6 +42,8 @@ The first incident was created **12 min 32 s** after the first failed logon.
 | 2026-11-08 00:15:07 | Teardown started: `az group delete -n rg-soc-honeypot` | Cloud Shell |
 | 00:18:17 | `rg-soc-honeypot` gone (VM, disk, NIC, NSG, public IP); `dcr-soc-rdp` deleted | Azure |
 | ~00:19 | #5–#17 closed as True Positive / Suspicious activity | Sentinel API |
+| 00:22:28 | **Incident #18** created from the attack's last failures (the final one was at 00:14:58; 4,859 from 78.46.176.17 over the whole exposure). Missed: it was raised after the batch close | Sentinel |
+| ~04:15 | Final review before teardown finds #18 still "New". It was never closed; the workspace was deleted at 04:20 | Sentinel Logs (`SecurityIncident`) |
 
 ## 3. Investigation (NIST SP 800-61: detection & analysis)
 
@@ -76,6 +78,7 @@ If this were a production server:
 
 - **Exposure finds you fast.** Scanners connected in 12 minutes. Password guessing started 6 hours later and never stopped. Leaving RDP open to `*` is a matter of when, not if.
 - **One attack, thirteen incidents.** The rule's 30-minute suppression with grouping off turned one continuous attack into 13 incidents, one per half hour. **Fix:** enable incident grouping by IP/host over a few hours, so one attack is one incident with many alerts.
+- **Closing a batch is not the end.** I closed #5–#17 at 00:19, but the rule's 10-minute lookback still held failures from the attack's final minutes, and it raised #18 three minutes later. **Fix:** after closing incidents for an attack, wait at least one full lookback after the activity stops, then re-check the queue.
 - **The rule counted the wrong thing for this attack.** It thresholds per account, so a spray across 10 usernames still alerted only because each name got many tries. **Tuning:** add a second rule that counts distinct usernames per source IP (spraying) and map the `IpAddress` entity so incidents carry the attacker IP.
 - **Collect connection telemetry centrally.** Sign-in events alone missed every scanner that never sent a password, and the host's own RDP log overwrote itself within hours. The RDP DCR closed both gaps.
 - **Implemented 2026-11-08.** Grouping is now on for the sign-in rule (by Host). The new spray rule (one IP, 10+ failures, 3+ accounts, grouped by IP) fires on 78.46.176.17 in 40 of 41 ten-minute windows of this attack and nowhere else, so this attack would have been one incident. See [evidence/tuning-and-mde-setup.md](../evidence/tuning-and-mde-setup.md).

@@ -68,3 +68,9 @@ Two tests ran on `vm-soc-win` through Azure Run Command:
 
 - Defender for Servers (`VirtualMachines` pricing) set back to **Free**, ending the trial early, so nothing will bill after 2026-12-08.
 - `vm-soc-win` **deallocated** (no compute charges). The workspace, rules, DCRs and logs stay in `rg-soc-lab`.
+
+## 5. Final review and teardown (2026-11-08 ~04:15–04:24 UTC)
+
+- Portal screenshots taken from Sentinel → Logs ([images/screenshots/](../images/screenshots/)). The Azure portal's Sentinel Incidents and Analytics pages now say "This page was moved to Defender portal", so incidents were listed from the `SecurityIncident` table.
+- The incident list showed **#18 still "New"**: a 14th honeypot incident raised at 00:22:28, three minutes after #5–#17 were closed. See the INC-0002 timeline and lessons.
+- `az group delete -n rg-soc-lab --yes` started 04:20:13 UTC. It removed 12 resources: `law-soc-lab` with the SecurityInsights solution, `dcr-soc-signins`, `dcr-soc-defender`, `vm-soc-win` and its `AzureMonitorWindowsAgent` and `MDE.Windows` extensions, `os-soc-lab`, `vm-soc-winVMNic`, `pip-soc-lab`, `vnet-soc-lab` and `nsg-soc-lab`. There were no resource locks. It finished at 04:23:16 (exit 0), and `az group exists -n rg-soc-lab` returns `false`. The only group left in the subscription is Azure's automatic `NetworkWatcherRG` (free).
