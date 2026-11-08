@@ -47,7 +47,7 @@ The first incident was created **12 min 32 s** after the first failed logon.
 
 ## 3. Investigation (NIST SP 800-61: detection & analysis)
 
-- **What was attempted?** 4,473 network logons (type 3, via NLA/`NtLmSsp`) over 367 minutes. The rate was a steady 12 per minute, peaking at 14. That steady pace points to an automated tool working through a list.
+- **What was attempted?** 4,473 failed network logons in the 23:45 UTC data cut (type 3, via NLA/`NtLmSsp`) over 367 minutes. The rate was a steady 12 per minute, peaking at 14. That steady pace points to an automated tool working through a list.
 - **Which accounts?** A short generic wordlist: `Administrator` 645, `Admin` 642, `server` 635, `user` 634, `support` 632, `test` 631, `remote` 630, plus `ME`, `DefaultAccount`, `guest` and `Test`.
   - 4,459 attempts failed with `0xc0000064` (the user doesn't exist).
   - 14 failed with `0xc000006a` (wrong password) against `DefaultAccount` and `Guest`. Those are built-in accounts and disabled by default.
@@ -77,9 +77,9 @@ If this were a production server:
 ## 5. Post-incident: what I learned and changed
 
 - **Exposure finds you fast.** Scanners connected in 12 minutes. Password guessing started 6 hours later and never stopped. Leaving RDP open to `*` is a matter of when, not if.
-- **One attack, thirteen incidents.** The rule's 30-minute suppression with grouping off turned one continuous attack into 13 incidents, one per half hour. **Fix:** enable incident grouping by IP/host over a few hours, so one attack is one incident with many alerts.
+- **One attack, fourteen incidents.** The 30-minute suppression with grouping off let the rule create 13 incidents before batch closure and a 14th afterward. **Fix:** enable incident grouping by IP/host over a few hours, so one attack is one incident with many alerts.
 - **Closing a batch is not the end.** I closed #5–#17 at 00:19, but the rule's 10-minute lookback still held failures from the attack's final minutes, and it raised #18 three minutes later. **Fix:** after closing incidents for an attack, wait at least one full lookback after the activity stops, then re-check the queue.
 - **The rule counted the wrong thing for this attack.** It thresholds per account, so a spray across 10 usernames still alerted only because each name got many tries. **Tuning:** add a second rule that counts distinct usernames per source IP (spraying) and map the `IpAddress` entity so incidents carry the attacker IP.
 - **Collect connection telemetry centrally.** Sign-in events alone missed every scanner that never sent a password, and the host's own RDP log overwrote itself within hours. The RDP DCR closed both gaps.
-- **Implemented 2026-11-08.** Grouping is now on for the sign-in rule (by Host). The new spray rule (one IP, 10+ failures, 3+ accounts, grouped by IP) fires on 78.46.176.17 in 40 of 41 ten-minute windows of this attack and nowhere else, so this attack would have been one incident. See [evidence/tuning-and-mde-setup.md](../evidence/tuning-and-mde-setup.md).
-- **Basic hygiene beat the attack.** A non-default admin name, NLA and a strong password meant 4,473 attempts never got past the login check.
+- **Implemented 2026-11-08.** Grouping is now on for the sign-in rule (by Host). The new spray rule (one IP, 10+ failures, 3+ accounts, grouped by IP) fires on 78.46.176.17 in 40 of 41 ten-minute windows of this attack and nowhere else, which projects one grouped incident. The new rule was backtested on historical events. See [evidence/tuning-and-mde-setup.md](../evidence/tuning-and-mde-setup.md).
+- **Basic hygiene beat the attack.** A non-default admin name, NLA and a strong password kept the attack from reaching a desktop session.

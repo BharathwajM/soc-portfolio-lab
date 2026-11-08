@@ -2,6 +2,14 @@
 
 This lab pairs Microsoft Sentinel detection and incident response (failed sign-ins, endpoint malware detections, and a real internet-facing honeypot) with a local OpenVAS vulnerability-management exercise. The Azure test VM generates its own failed sign-ins. The honeypot collected 12 hours of real attack traffic. The OpenVAS target lives on a separate internal container network.
 
+## Start with the evidence
+
+| Case | What the evidence shows |
+|---|---|
+| [Sentinel sign-in investigation](reports/INC-0001-repeated-signin-failures.md) | Six simulated failures triggered an incident. The single-failure control stayed below the threshold. |
+| [Internet RDP honeypot](reports/INC-0002-honeypot-rdp-bruteforce.md) | The 23:45 UTC data cut contained 4,473 failed logons. The later timeline records 4,859 failures from the primary source alone over the full exposure. |
+| [OpenVAS scan, fix, and rescan](reports/VULN-0001-apache-remediation.md) | High findings fell from 4 to 0 and medium findings from 9 to 0. Two low findings remained. |
+
 ## 1. Build the Sentinel lab
 
 1. Create `rg-soc-lab` in Azure for Students. Create the `law-soc-lab` Log Analytics workspace in Japan East. The subscription allows Japan East for these resources.
@@ -38,9 +46,9 @@ The VM runs Microsoft Defender Antivirus (built into Windows Server). This step 
 4. Investigate in Sentinel: source IPs and geolocation (`geo_info_from_ip_address`), usernames and failure codes, hourly timeline, and any 4624 type 3/10 or 1149 success. Confirm on the host with Run Command.
 5. Tear down the resource group. The logs stay in the workspace.
 
-**Result:** Scanners found the port in 12 minutes. Password guessing started about 6 h later. Over 12 h the honeypot logged **4,473 failed logons**: 4,471 from one German hosting IP and 2 from South Korea. Attackers tried 11 generic usernames (Administrator, Admin, server, user…) at about 12 per minute. 21 IPs connected in total. **No logon succeeded**: the real admin name was never tried, and every attempt failed at NLA. The rule raised 13 incidents for one continuous attack (30-minute suppression, grouping off), which the report covers as a tuning lesson. The honeypot was deleted on 2026-11-08 at 00:18 UTC, and the 13 incidents were closed as true positives at 00:19. The attack's last minutes raised one more incident (#18) at 00:22, *after* that closure. It sat untriaged as "New" until the final review at ~04:15 UTC spotted it (screenshot below). Lesson: re-check the queue after closing a batch while the rule is still running. Evidence: [evidence/honeypot-final-2347Z.md](evidence/honeypot-final-2347Z.md). Write-up: [reports/INC-0002-honeypot-rdp-bruteforce.md](reports/INC-0002-honeypot-rdp-bruteforce.md).
+**Result:** Scanners found the port in 12 minutes. Password guessing started about 6 h later. The data cut through **23:45 UTC** recorded **4,473 failed logons**: 4,471 from one German hosting IP and 2 from South Korea. Attackers tried 11 generic usernames (Administrator, Admin, server, user…) at about 12 per minute. 21 IPs connected in total. **No logon succeeded**: the real admin name was never tried, and every attempt failed at NLA. The rule raised 14 incidents for one continuous attack, with 30-minute suppression and grouping off. The honeypot was deleted on 2026-11-08 at 00:18 UTC, and the 13 incidents were closed as true positives at 00:19. The attack's last minutes raised one more incident (#18) at 00:22, *after* that closure. It sat untriaged as "New" until the final review at ~04:15 UTC spotted it (screenshot below). That review recorded 4,859 failures from the primary source alone over the full exposure. Lesson: re-check the queue after closing a batch while the rule is still running. Evidence: [evidence/honeypot-final-2347Z.md](evidence/honeypot-final-2347Z.md). Write-up: [reports/INC-0002-honeypot-rdp-bruteforce.md](reports/INC-0002-honeypot-rdp-bruteforce.md).
 
-![Sentinel Logs: the two source IPs, geolocated, over the report window](images/screenshots/honeypot-attackers-kql.png)
+![Sentinel Logs: the two source IPs through 23:45 UTC](images/screenshots/honeypot-attackers-kql.png)
 
 ![Failed RDP logons per hour on the honeypot](images/honeypot-hourly.png)
 
@@ -48,7 +56,7 @@ The VM runs Microsoft Defender Antivirus (built into Windows Server). This step 
 
 ### Tuning after the honeypot
 
-- **New rule:** [password spray from one source IP](detections/password-spray-by-source-ip.kql) ([definition](detections/password-spray-analytics-rule.json)). One IP with 10+ failures against 3+ accounts in 10 minutes. It maps IP and Host entities and groups incidents by IP. Backtested on the honeypot data, it fires on the attacker in 40 of 41 ten-minute windows and on nothing else. That is 1 incident where the old rule made 13.
+- **New rule:** [password spray from one source IP](detections/password-spray-by-source-ip.kql) ([definition](detections/password-spray-analytics-rule.json)). One IP with 10+ failures against 3+ accounts in 10 minutes. It maps IP and Host entities and groups incidents by IP. Backtested on the honeypot data, it fires on the attacker in 40 of 41 ten-minute windows and on nothing else. Grouping those matches by IP projects one incident. The original rule raised 14 during the live lab.
 - **Existing sign-in rule:** incident grouping turned on (by Host, 24 h).
 - **Defender for Endpoint:** enabled through Defender for Servers Plan 1 (30-day trial). Its alerts reach Sentinel through the Defender for Cloud connector plus an incident-creation rule. With the agent onboarded, I reran EICAR and ran [Microsoft's MDE detection test](scripts/Invoke-MdeDetectionTest.ps1). MDE raised 5 alerts, from the EICAR block to "Suspicious PowerShell command line" to "Azure RunScript used to deploy malicious code", which flagged my own Run Command delivery. Sentinel merged them into one incident (#19, "Multi-stage incident involving Execution & Lateral movement") about 1 minute after the test. Both test incidents were closed as benign positives. Afterwards the plan was set back to Free and the VM deallocated.
 
@@ -56,7 +64,7 @@ Details: [evidence/tuning-and-mde-setup.md](evidence/tuning-and-mde-setup.md).
 
 ![Sentinel Logs: the 5 Defender for Endpoint alerts behind incident #19](images/screenshots/incident-19-mde-alerts.png)
 
-![Sentinel Logs: every incident the lab raised (#1-#20)](images/screenshots/sentinel-incidents.png)
+![Sentinel Logs: the incident list, with 20 total and 18 visible](images/screenshots/sentinel-incidents.png)
 
 The portal screenshots were taken on 2026-11-08 from Sentinel → Logs, just before teardown. Microsoft has moved Sentinel's Incidents and Analytics pages to the Defender portal, so the incident list is shown through the `SecurityIncident` table instead. The account name in the portal header is blanked.
 

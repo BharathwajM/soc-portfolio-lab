@@ -21,7 +21,7 @@
 | 175.203.62.5 (2 attempts) | 1 | 0 | none | 2 / 1 |
 | vm-soc-win (9 simulated local failures, no source IP) | n/a | 0 | none (filtered: `IpAddress` is "-") | n/a |
 
-With IP grouping, the 40 alerts would form **1 incident**. The old sign-in rule created 13.
+With IP grouping, the 40 alerts would form **1 incident**. The live sign-in rule created 14, including #18 after the initial batch was closed.
 
 ### Existing rule tuned: repeated sign-in failures
 
