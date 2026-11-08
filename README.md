@@ -12,6 +12,8 @@ This lab pairs Microsoft Sentinel detection and incident response (failed sign-i
 
 ## 1. Build the Sentinel lab
 
+**Rebuilding the lab today.** Provision the Log Analytics workspace in Azure, then follow Microsoft's onboarding instructions to connect the Sentinel-enabled workspace to the Microsoft Defender portal. Microsoft lists **31 March 2027** as the end of Azure-portal support for Sentinel. [Defender portal onboarding](https://learn.microsoft.com/en-us/microsoft-365/security/defender/microsoft-sentinel-onboard) · [Portal support timeline](https://learn.microsoft.com/en-us/azure/sentinel/microsoft-sentinel-defender-portal)
+
 1. Create `rg-soc-lab` in Azure for Students. Create the `law-soc-lab` Log Analytics workspace in Japan East. The subscription allows Japan East for these resources.
 2. Enable Microsoft Sentinel on `law-soc-lab`. Install Microsoft's Windows Security Events solution to get the **Windows Security Events via AMA** connector.
 3. Deploy a small Windows Server 2022 lab VM named `vm-soc-win` in Japan East. Give it a system-assigned identity and use Trusted Launch. For this deployment the Standard IP supplies outbound connectivity, and the network security group has no custom inbound allow rules. Run guest commands through Azure Run Command.
