@@ -24,4 +24,10 @@ python backtests/replay.py backtests/synthetic-4625.csv --start 2026-11-08T00:00
 
 The fixture yields **three matching run/IP pairs across five scheduled runs**. If the two source IPs start with no open incidents and grouping behaves as configured, those pairs project **two incident groups** within the 24-hour grouping window. The replay counts query matches. Sentinel creates and manages incidents separately.
 
+The regression tests check the exact fixture match times and the window boundaries.
+
+~~~bash
+python -m unittest discover -s backtests -v
+~~~
+
 For a replay using your own lab export, provide a CSV with `TimeGenerated`, `EventID`, `IpAddress`, and `TargetUserName`. Use ISO 8601 timestamps with an explicit offset, and choose five-minute UTC boundaries matching the complete event coverage. The first complete scheduled window starts ten minutes after the lower bound. Compare the local output with the two KQL queries in a workspace that contains the same events.
