@@ -1,0 +1,4 @@
+The command was successfully executed.
+
+{"Account":"soclab-smoke","TimeUtc":"2026-11-07T09:16:10.4379315Z","EventId":4625,"RecordId":4132}
+

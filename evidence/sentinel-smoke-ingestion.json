@@ -1,0 +1,29 @@
+{
+  "columns": [
+    {
+      "name": "Computer",
+      "type": "string"
+    },
+    {
+      "name": "Count",
+      "type": "long"
+    },
+    {
+      "name": "FirstSeen",
+      "type": "datetime"
+    },
+    {
+      "name": "LastSeen",
+      "type": "datetime"
+    }
+  ],
+  "name": "PrimaryResult",
+  "rows": [
+    [
+      "vm-soc-win",
+      1,
+      "2026-11-07T09:12:28.5366756Z",
+      "2026-11-07T09:12:28.5366756Z"
+    ]
+  ]
+}

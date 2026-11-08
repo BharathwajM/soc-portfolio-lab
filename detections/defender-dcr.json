@@ -1,0 +1,37 @@
+{
+  "location": "japaneast",
+  "properties": {
+    "description": "SOC lab: Microsoft Defender Antivirus detections (1116 detected, 1117 action taken)",
+    "dataSources": {
+      "windowsEventLogs": [
+        {
+          "name": "defenderDetections",
+          "streams": [
+            "Microsoft-Event"
+          ],
+          "xPathQueries": [
+            "Microsoft-Windows-Windows Defender/Operational!*[System[(EventID=1116 or EventID=1117)]]"
+          ]
+        }
+      ]
+    },
+    "destinations": {
+      "logAnalytics": [
+        {
+          "name": "law",
+          "workspaceResourceId": "/subscriptions/<subscription-id>/resourceGroups/rg-soc-lab/providers/Microsoft.OperationalInsights/workspaces/law-soc-lab"
+        }
+      ]
+    },
+    "dataFlows": [
+      {
+        "streams": [
+          "Microsoft-Event"
+        ],
+        "destinations": [
+          "law"
+        ]
+      }
+    ]
+  }
+}

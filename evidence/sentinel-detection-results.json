@@ -1,0 +1,49 @@
+{
+  "columns": [
+    {
+      "name": "TimeGenerated",
+      "type": "datetime"
+    },
+    {
+      "name": "Computer",
+      "type": "string"
+    },
+    {
+      "name": "TargetAccount",
+      "type": "string"
+    },
+    {
+      "name": "FailedAttempts",
+      "type": "long"
+    },
+    {
+      "name": "FirstFailure",
+      "type": "datetime"
+    },
+    {
+      "name": "LastFailure",
+      "type": "datetime"
+    },
+    {
+      "name": "SourceAddresses",
+      "type": "dynamic"
+    },
+    {
+      "name": "StatusCodes",
+      "type": "dynamic"
+    }
+  ],
+  "name": "PrimaryResult",
+  "rows": [
+    [
+      "2026-11-07T09:17:27.1138855Z",
+      "vm-soc-win",
+      "soclab-probe",
+      6,
+      "2026-11-07T09:17:25.5526461Z",
+      "2026-11-07T09:17:27.1138855Z",
+      "[]",
+      "[\"0xc000006d\"]"
+    ]
+  ]
+}

@@ -1,0 +1,4 @@
+The command was successfully executed.
+
+[{"Account":"soclab-control","TimeUtc":"2026-11-07T09:17:25.2393619Z","EventId":4625,"RecordId":4153},{"Account":"soclab-probe","TimeUtc":"2026-11-07T09:17:25.5526461Z","EventId":4625,"RecordId":4155},{"Account":"soclab-probe","TimeUtc":"2026-11-07T09:17:25.8637922Z","EventId":4625,"RecordId":4157},{"Account":"soclab-probe","TimeUtc":"2026-11-07T09:17:26.1762651Z","EventId":4625,"RecordId":4159},{"Account":"soclab-probe","TimeUtc":"2026-11-07T09:17:26.4888932Z","EventId":4625,"RecordId":4161},{"Account":"soclab-probe","TimeUtc":"2026-11-07T09:17:26.8013520Z","EventId":4625,"RecordId":4163},{"Account":"soclab-probe","TimeUtc":"2026-11-07T09:17:27.1138855Z","EventId":4625,"RecordId":4165}]
+

@@ -1,0 +1,110 @@
+{
+  "phase": "hardened",
+  "report_id": "a085a779-bf6b-45ec-a2e8-c3105153b364",
+  "target": "isolated Apache container",
+  "finished_utc": "2026-11-07T10:23:11.269982+00:00",
+  "findings": [
+    {
+      "name": "Allowed HTTP Methods Enumeration",
+      "severity": "0.0",
+      "qod": "70",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "Apache HTTP Server Detection Consolidation",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "CPE Inventory",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/CPE-T",
+      "references": []
+    },
+    {
+      "name": "Hostname Determination Reporting",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "HTTP Security Headers Detection",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "HTTP Server Banner Enumeration",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "HTTP Server type and version",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "ICMP Timestamp Reply Information Disclosure",
+      "severity": "2.1",
+      "qod": "80",
+      "port": "general/icmp",
+      "references": [
+        "CVE-1999-0524"
+      ]
+    },
+    {
+      "name": "IP Forwarding Enabled - Active Check",
+      "severity": "0.0",
+      "qod": "70",
+      "port": "general/tcp",
+      "references": [
+        "CVE-1999-0511"
+      ]
+    },
+    {
+      "name": "OS Detection Consolidation and Reporting",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "Services",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "TCP Timestamps Information Disclosure",
+      "severity": "2.6",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "Traceroute",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "Web Application Scanning Consolidation / Info Reporting",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    }
+  ]
+}

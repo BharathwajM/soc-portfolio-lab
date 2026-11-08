@@ -1,0 +1,251 @@
+{
+  "phase": "baseline",
+  "report_id": "0cf2c7bb-103e-43da-bd18-231fc98589e5",
+  "target": "isolated Apache container",
+  "finished_utc": "2026-11-07T10:09:29.123925+00:00",
+  "findings": [
+    {
+      "name": "Allowed HTTP Methods Enumeration",
+      "severity": "0.0",
+      "qod": "70",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "Apache HTTP Server 2.4.17 - 2.4.57 DoS Vulnerability - Linux",
+      "severity": "5.9",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2023-45802"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.17 < 2.4.64 DoS Vulnerability - Linux",
+      "severity": "5.0",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2025-53020"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.26 < 2.4.64 DoS Vulnerability - Linux",
+      "severity": "5.0",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2025-49630"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.30 - 2.4.55 HTTP Request Smuggling Vulnerability - Linux",
+      "severity": "7.5",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2023-27522"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.30 - 2.4.65 Integer Overflow Vulnerability - Linux",
+      "severity": "2.6",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2025-55753"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.35 < 2.4.64 Access Control Bypass Vulnerability - Linux",
+      "severity": "5.0",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2025-23048"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.7 - 2.4.51 Multiple Vulnerabilities - Linux",
+      "severity": "8.2",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2021-44224"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.7 - 2.4.65 Authentication Bypass Vulnerability - Linux",
+      "severity": "5.8",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2025-66200"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server 2.4.x < 2.4.66 Improper Neutralization Vulnerability - Linux",
+      "severity": "4.3",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2025-65082"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server < 2.4.58 'mod_macro' Out-of-bounds Read Vulnerability - Linux",
+      "severity": "7.5",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2023-31122"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server < 2.4.59 Multiple Vulnerabilities - Linux",
+      "severity": "7.5",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2023-38709",
+        "CVE-2024-24795",
+        "CVE-2024-27316"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server < 2.4.64 Multiple Vulnerabilities - Linux",
+      "severity": "5.0",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2024-42516",
+        "CVE-2024-43204",
+        "CVE-2024-47252",
+        "CVE-2025-49812"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server < 2.4.66 SSI Vulnerability - Linux",
+      "severity": "4.3",
+      "qod": "30",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2025-58098"
+      ]
+    },
+    {
+      "name": "Apache HTTP Server Detection Consolidation",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "CPE Inventory",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/CPE-T",
+      "references": []
+    },
+    {
+      "name": "Hostname Determination Reporting",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "HTTP Debugging Methods (TRACE/TRACK) Enabled",
+      "severity": "5.8",
+      "qod": "99",
+      "port": "80/tcp",
+      "references": [
+        "CVE-2003-1567",
+        "CVE-2004-2320",
+        "CVE-2004-2763",
+        "CVE-2005-3398",
+        "CVE-2006-4683",
+        "CVE-2007-3008",
+        "CVE-2008-7253",
+        "CVE-2009-2823",
+        "CVE-2010-0386",
+        "CVE-2012-2223",
+        "CVE-2014-7883"
+      ]
+    },
+    {
+      "name": "HTTP Security Headers Detection",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "HTTP Server Banner Enumeration",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "HTTP Server type and version",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "ICMP Timestamp Reply Information Disclosure",
+      "severity": "2.1",
+      "qod": "80",
+      "port": "general/icmp",
+      "references": [
+        "CVE-1999-0524"
+      ]
+    },
+    {
+      "name": "IP Forwarding Enabled - Active Check",
+      "severity": "0.0",
+      "qod": "70",
+      "port": "general/tcp",
+      "references": [
+        "CVE-1999-0511"
+      ]
+    },
+    {
+      "name": "OS Detection Consolidation and Reporting",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "Services",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    },
+    {
+      "name": "TCP Timestamps Information Disclosure",
+      "severity": "2.6",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "Traceroute",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "general/tcp",
+      "references": []
+    },
+    {
+      "name": "Web Application Scanning Consolidation / Info Reporting",
+      "severity": "0.0",
+      "qod": "80",
+      "port": "80/tcp",
+      "references": []
+    }
+  ]
+}

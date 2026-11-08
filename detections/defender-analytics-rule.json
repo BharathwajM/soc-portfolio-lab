@@ -1,0 +1,47 @@
+{
+  "kind": "Scheduled",
+  "properties": {
+    "displayName": "SOC Lab - Defender Antivirus Malware Detection",
+    "description": "Raises an incident when Microsoft Defender Antivirus on a lab endpoint detects malware (event 1116) or acts on it (event 1117).",
+    "severity": "High",
+    "enabled": true,
+    "query": "Event\n| where Source == \"Microsoft-Windows-Windows Defender\" and EventID in (1116, 1117)\n| extend Threat = extract(@\"Name=\"\"Threat Name\"\">([^<]+)<\", 1, EventData),\n         Path = extract(@\"Name=\"\"Path\"\">([^<]+)<\", 1, EventData),\n         Action = extract(@\"Name=\"\"Action Name\"\">([^<]+)<\", 1, EventData),\n         Severity = extract(@\"Name=\"\"Severity Name\"\">([^<]+)<\", 1, EventData)\n| summarize Events = count(), EventIDs = make_set(EventID), Actions = make_set(Action),\n            FirstSeen = min(TimeGenerated), LastSeen = max(TimeGenerated)\n    by Computer, Threat, Path, Severity\n| project TimeGenerated = LastSeen, Computer, Threat, Severity, Path, Actions, EventIDs, Events, FirstSeen",
+    "queryFrequency": "PT5M",
+    "queryPeriod": "PT10M",
+    "triggerOperator": "GreaterThan",
+    "triggerThreshold": 0,
+    "suppressionDuration": "PT1H",
+    "suppressionEnabled": false,
+    "eventGroupingSettings": {
+      "aggregationKind": "AlertPerResult"
+    },
+    "entityMappings": [
+      {
+        "entityType": "Host",
+        "fieldMappings": [
+          {
+            "identifier": "HostName",
+            "columnName": "Computer"
+          }
+        ]
+      }
+    ],
+    "customDetails": {
+      "Threat": "Threat",
+      "FilePath": "Path",
+      "Actions": "Actions"
+    },
+    "incidentConfiguration": {
+      "createIncident": true,
+      "groupingConfiguration": {
+        "enabled": true,
+        "reopenClosedIncident": false,
+        "lookbackDuration": "PT5H",
+        "matchingMethod": "AllEntities",
+        "groupByEntities": [],
+        "groupByAlertDetails": [],
+        "groupByCustomDetails": []
+      }
+    }
+  }
+}

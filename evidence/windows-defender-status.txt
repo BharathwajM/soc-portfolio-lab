@@ -1,0 +1,2 @@
+{"Computer":"vm-soc-win","AntivirusEnabled":true,"RealTimeProtectionEnabled":true}
+

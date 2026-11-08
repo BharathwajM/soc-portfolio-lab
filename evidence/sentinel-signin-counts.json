@@ -1,0 +1,47 @@
+{
+  "columns": [
+    {
+      "name": "Computer",
+      "type": "string"
+    },
+    {
+      "name": "TargetAccount",
+      "type": "string"
+    },
+    {
+      "name": "EventID",
+      "type": "int"
+    },
+    {
+      "name": "Attempts",
+      "type": "long"
+    },
+    {
+      "name": "First",
+      "type": "datetime"
+    },
+    {
+      "name": "Last",
+      "type": "datetime"
+    }
+  ],
+  "name": "PrimaryResult",
+  "rows": [
+    [
+      "vm-soc-win",
+      "soclab-control",
+      4625,
+      1,
+      "2026-11-07T09:17:25.2393619Z",
+      "2026-11-07T09:17:25.2393619Z"
+    ],
+    [
+      "vm-soc-win",
+      "soclab-probe",
+      4625,
+      6,
+      "2026-11-07T09:17:25.5526461Z",
+      "2026-11-07T09:17:27.1138855Z"
+    ]
+  ]
+}

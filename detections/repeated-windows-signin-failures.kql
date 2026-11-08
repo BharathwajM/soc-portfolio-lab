@@ -1,0 +1,13 @@
+SecurityEvent
+| where TimeGenerated >= ago(10m) and EventID == 4625
+| extend TargetAccount = iff(isempty(TargetUserName), Account, TargetUserName)
+| where isnotempty(TargetAccount)
+| summarize FailedAttempts = count(),
+            FirstFailure = min(TimeGenerated),
+            LastFailure = max(TimeGenerated),
+            SourceAddresses = make_set_if(IpAddress, isnotempty(IpAddress) and IpAddress != "-", 10),
+            StatusCodes = make_set(Status, 10)
+    by Computer, TargetAccount
+| where FailedAttempts >= 5
+| project TimeGenerated = LastFailure, Computer, TargetAccount, FailedAttempts,
+          FirstFailure, LastFailure, SourceAddresses, StatusCodes
