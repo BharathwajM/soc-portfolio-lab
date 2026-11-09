@@ -26,8 +26,8 @@ The scheduled rule ([detections/repeated-windows-signin-failures.kql](../detecti
 | 09:17:25.239 | Negative control: 1 × 4625 for `soclab-control` (RecordId 4153) | `evidence/windows-signin-test-events.txt` |
 | 09:17:25.553 | First failure for `soclab-probe` (RecordId 4155) | same |
 | 09:17:27.114 | Sixth and last failure for `soclab-probe` (RecordId 4165), ~1.6 s after the first | same |
-| — | Sentinel `SecurityEvent` shows 6 × 4625 for `soclab-probe` and 1 × 4625 for `soclab-control`, matching the host | `evidence/sentinel-signin-counts.json` |
-| — | Detection query returns one row: `vm-soc-win` / `soclab-probe`, 6 attempts, status `0xc000006d` | `evidence/sentinel-detection-results.json` |
+| After ingestion | Sentinel `SecurityEvent` shows 6 × 4625 for `soclab-probe` and 1 × 4625 for `soclab-control`, matching the host | `evidence/sentinel-signin-counts.json` |
+| After ingestion | Detection query returns one row: `vm-soc-win` / `soclab-probe`, 6 attempts, status `0xc000006d` | `evidence/sentinel-detection-results.json` |
 | 09:27:23 | Incident #1 created by the scheduled rule | `evidence/sentinel-incident.json` |
 
 ## 3. Evidence and analysis
