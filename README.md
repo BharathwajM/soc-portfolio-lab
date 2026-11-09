@@ -115,3 +115,7 @@ Everything was deleted on 2026-11-08 so the lab costs nothing: the Azure resourc
 - [NIST incident response guidance](https://csrc.nist.gov/projects/incident-response)
 - [Greenbone Community Containers](https://greenbone.github.io/docs/latest/22.4/container/)
 - [Apache HTTP Server 2.4 security advisories](https://httpd.apache.org/security/vulnerabilities_24.html)
+
+---
+
+*Part of my security portfolio. See also: [AD attack & detection lab (Splunk)](https://github.com/BharathwajM/ad-attack-detection-lab) · [Phishing triage tool (Python)](https://github.com/BharathwajM/phishing-triage-automation) · [Essential Eight hardening lab (PowerShell)](https://github.com/BharathwajM/essential-eight-lab).*
