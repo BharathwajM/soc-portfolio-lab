@@ -60,6 +60,8 @@ I deployed a second Windows Server 2022 VM, `vm-honeypot`, in its own resource g
 
 Evidence: [honeypot-final-2347Z.md](evidence/honeypot-final-2347Z.md). Write-up: [INC-0002](reports/INC-0002-honeypot-rdp-bruteforce.md), which also covers the final count of 4,859 failures from the main IP over the whole exposure.
 
+**Threat-intel enrichment.** I looked up all 15 source IPs in RIPEstat, GreyNoise and Shodan with a small [stdlib Python script](scripts/enrich_ips.py). The main attacker, a Hetzner server, had **no bad reputation**: GreyNoise had never seen it scanning, so only its behaviour identified it. The second password guesser looks like a compromised Korean machine with RDP exposed, and 8 of the 13 scanners were known benign research scanners. Details: [honeypot-ip-enrichment.md](evidence/honeypot-ip-enrichment.md).
+
 ![Sentinel Logs: the two source IPs through 23:45 UTC](images/screenshots/honeypot-attackers-kql.png)
 
 ![Failed RDP logons per hour on the honeypot](images/honeypot-hourly.png)

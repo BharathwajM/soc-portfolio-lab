@@ -1,0 +1,442 @@
+{
+  "queried_at_utc": "2026-11-10T09:28:15Z",
+  "sources": [
+    "RIPEstat",
+    "GreyNoise Community API",
+    "Shodan InternetDB"
+  ],
+  "results": [
+    {
+      "ip": "78.46.176.17",
+      "role": "brute-force",
+      "asn": 24940,
+      "as_holder": "HETZNER-AS Hetzner Online GmbH",
+      "prefix": "78.46.0.0/15",
+      "registry_country": "DE",
+      "abuse_contact": "abuse@hetzner.com",
+      "greynoise": {
+        "http_status": 404,
+        "noise": false,
+        "riot": false,
+        "classification": null,
+        "name": null,
+        "last_seen": null,
+        "message": "IP not observed scanning the internet."
+      },
+      "shodan_internetdb": {
+        "http_status": 404,
+        "ports": [],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "175.203.62.5",
+      "role": "brute-force",
+      "asn": 4766,
+      "as_holder": "KIXS-AS-KR-KR - Korea Telecom",
+      "prefix": "175.200.0.0/13",
+      "registry_country": "KR",
+      "abuse_contact": "hostmaster@nic.or.kr",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "malicious",
+        "name": "unknown",
+        "last_seen": "2026-11-09",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          21,
+          3306,
+          3389,
+          5357,
+          7000,
+          7777,
+          8020,
+          8081,
+          8083,
+          8089,
+          8123,
+          8126,
+          8127,
+          8132,
+          8136,
+          8138,
+          8140,
+          8143,
+          8147,
+          8148,
+          8445,
+          8600,
+          8700,
+          8800,
+          8812,
+          8889,
+          8999,
+          9000,
+          9001,
+          9900,
+          20000
+        ],
+        "tags": [
+          "eol-product",
+          "self-signed"
+        ],
+        "hostnames": [],
+        "known_vulns": 303
+      }
+    },
+    {
+      "ip": "216.25.90.11",
+      "role": "scanner",
+      "asn": 396982,
+      "as_holder": "GOOGLE-CLOUD-PLATFORM - Google LLC",
+      "prefix": "216.25.90.0/23",
+      "registry_country": "US",
+      "abuse_contact": "dl-ipabuse@paloaltonetworks.com",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Cortex Xpanse",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 404,
+        "ports": [],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "198.235.24.79",
+      "role": "scanner",
+      "asn": 396982,
+      "as_holder": "GOOGLE-CLOUD-PLATFORM - Google LLC",
+      "prefix": "198.235.24.0/24",
+      "registry_country": null,
+      "abuse_contact": "dl-ipabuse@paloaltonetworks.com",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Cortex Xpanse",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          123
+        ],
+        "tags": [
+          "scanner"
+        ],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "4.247.144.80",
+      "role": "scanner",
+      "asn": 8075,
+      "as_holder": "MICROSOFT-CORP-MSN-AS-BLOCK - Microsoft Corporation",
+      "prefix": "4.240.0.0/12",
+      "registry_country": "US",
+      "abuse_contact": "abuse@microsoft.com",
+      "greynoise": {
+        "http_status": 404,
+        "noise": false,
+        "riot": false,
+        "classification": null,
+        "name": null,
+        "last_seen": null,
+        "message": "IP not observed scanning the internet."
+      },
+      "shodan_internetdb": {
+        "http_status": 404,
+        "ports": [],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "194.180.49.36",
+      "role": "scanner",
+      "asn": 201814,
+      "as_holder": "Mevspace MEVSPACE sp. z o.o.",
+      "prefix": "194.180.49.0/24",
+      "registry_country": "BG",
+      "abuse_contact": "abuse@razinetwork.com",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "malicious",
+        "name": "unknown",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 404,
+        "ports": [],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "194.187.178.28",
+      "role": "scanner",
+      "asn": 215778,
+      "as_holder": "ALPHASTRIKE-HK Alpha Strike Labs GmbH",
+      "prefix": "194.187.178.0/24",
+      "registry_country": "DE",
+      "abuse_contact": "abuse@alphastrike.io",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Alpha Strike Labs",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          179
+        ],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "194.187.178.74",
+      "role": "scanner",
+      "asn": 215778,
+      "as_holder": "ALPHASTRIKE-HK Alpha Strike Labs GmbH",
+      "prefix": "194.187.178.0/24",
+      "registry_country": "DE",
+      "abuse_contact": "abuse@alphastrike.io",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Alpha Strike Labs",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          179
+        ],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "194.187.178.90",
+      "role": "scanner",
+      "asn": 215778,
+      "as_holder": "ALPHASTRIKE-HK Alpha Strike Labs GmbH",
+      "prefix": "194.187.178.0/24",
+      "registry_country": "DE",
+      "abuse_contact": "abuse@alphastrike.io",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Alpha Strike Labs",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          179
+        ],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "194.187.178.163",
+      "role": "scanner",
+      "asn": 215778,
+      "as_holder": "ALPHASTRIKE-HK Alpha Strike Labs GmbH",
+      "prefix": "194.187.178.0/24",
+      "registry_country": "DE",
+      "abuse_contact": "abuse@alphastrike.io",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Alpha Strike Labs",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          179
+        ],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "194.187.178.203",
+      "role": "scanner",
+      "asn": 215778,
+      "as_holder": "ALPHASTRIKE-HK Alpha Strike Labs GmbH",
+      "prefix": "194.187.178.0/24",
+      "registry_country": "DE",
+      "abuse_contact": "abuse@alphastrike.io",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Alpha Strike Labs",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          179
+        ],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "194.187.178.235",
+      "role": "scanner",
+      "asn": 215778,
+      "as_holder": "ALPHASTRIKE-HK Alpha Strike Labs GmbH",
+      "prefix": "194.187.178.0/24",
+      "registry_country": "DE",
+      "abuse_contact": "abuse@alphastrike.io",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "benign",
+        "name": "Alpha Strike Labs",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          179
+        ],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "82.147.85.101",
+      "role": "scanner",
+      "asn": 211860,
+      "as_holder": "VPSDEDIC-AS Nerushenko Vyacheslav Nikolaevich",
+      "prefix": "82.147.84.0/23",
+      "registry_country": "RU",
+      "abuse_contact": "admin@vpsdedic.ru",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "suspicious",
+        "name": "unknown",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 200,
+        "ports": [
+          22
+        ],
+        "tags": [
+          "scanner"
+        ],
+        "hostnames": [
+          "82-147-85-101.vpsdedic.ru"
+        ],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "35.206.146.145",
+      "role": "scanner",
+      "asn": 15169,
+      "as_holder": "GOOGLE - Google LLC",
+      "prefix": "35.206.128.0/18",
+      "registry_country": "US",
+      "abuse_contact": "google-cloud-compliance@google.com",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "malicious",
+        "name": "unknown",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 404,
+        "ports": [],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    },
+    {
+      "ip": "199.165.159.121",
+      "role": "scanner",
+      "asn": 22168,
+      "as_holder": "SHADOWSERVER-FOUNDATION - The Shadowserver Foundation, Inc.",
+      "prefix": "199.165.159.0/24",
+      "registry_country": "US",
+      "abuse_contact": "abuse@shadowserver.org",
+      "greynoise": {
+        "http_status": 200,
+        "noise": true,
+        "riot": false,
+        "classification": "malicious",
+        "name": "unknown",
+        "last_seen": "2026-11-10",
+        "message": "Success"
+      },
+      "shodan_internetdb": {
+        "http_status": 404,
+        "ports": [],
+        "tags": [],
+        "hostnames": [],
+        "known_vulns": 0
+      }
+    }
+  ]
+}

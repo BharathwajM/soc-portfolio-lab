@@ -59,6 +59,7 @@ The first incident was created **12 min 32 s** after the first failed logon.
 - **Who else?**
   - 17 IPs connected to 3389 after 16:38, and 4 more earlier. Only 2 of them sent credentials; the rest were scanners mapping the port.
   - 78.46.176.17 sits in a hosting provider's range in Falkenstein, Germany. That fits a rented or compromised server used for scanning.
+- **Threat-intel enrichment (added 2026-11-10).** GreyNoise has not seen 78.46.176.17 mass-scanning, so its reputation was clean; only its behaviour gave it away. 175.203.62.5 is a Korea Telecom address that GreyNoise rates malicious and Shodan shows with RDP and 30 other ports open, which suggests a compromised machine. 8 of the 13 connect-only scanners are known benign research scanners (Cortex Xpanse, Alpha Strike Labs). Details: [honeypot-ip-enrichment.md](../evidence/honeypot-ip-enrichment.md).
 - **Logging gap found.** The VM's local RdpCoreTS log rolled over and kept only the last ~143 connections, so the morning's scanner activity was gone from the host by evening. Sentinel kept the full history from 16:38.
 
 ## 4. Containment, eradication, recovery
