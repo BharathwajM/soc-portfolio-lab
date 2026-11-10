@@ -120,4 +120,4 @@ Everything was deleted on 2026-11-08 so the lab costs nothing: the Azure resourc
 
 ---
 
-*Part of my security portfolio. See also: [AD attack & detection lab (Splunk)](https://github.com/BharathwajM/ad-attack-detection-lab) · [Phishing triage tool (Python)](https://github.com/BharathwajM/phishing-triage-automation) · [Essential Eight hardening lab (PowerShell)](https://github.com/BharathwajM/essential-eight-lab).*
+*Part of my security portfolio. See also: [Splunk BOTS v3 breach investigation](https://github.com/BharathwajM/splunk-bots-v3-investigation) · [AD attack & detection lab (Splunk)](https://github.com/BharathwajM/ad-attack-detection-lab) · [Phishing triage tool (Python)](https://github.com/BharathwajM/phishing-triage-automation) · [Essential Eight hardening lab (PowerShell)](https://github.com/BharathwajM/essential-eight-lab).*
